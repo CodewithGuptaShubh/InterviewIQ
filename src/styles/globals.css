@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 222 47% 7%;
+  --foreground: 210 40% 96%;
+  --card: 222 38% 11%;
+  --card-foreground: 210 40% 96%;
+  --muted: 219 28% 16%;
+  --muted-foreground: 215 18% 68%;
+  --accent: 187 74% 17%;
+  --accent-foreground: 187 92% 78%;
+  --primary: 176 68% 45%;
+  --primary-foreground: 222 47% 7%;
+  --border: 216 22% 20%;
+  --input: 216 22% 18%;
+  --ring: 176 68% 45%;
+}
+
+.light {
+  color-scheme: light;
+  --background: 210 40% 98%;
+  --foreground: 222 47% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 10%;
+  --muted: 210 28% 92%;
+  --muted-foreground: 215 16% 42%;
+  --accent: 186 44% 89%;
+  --accent-foreground: 189 90% 20%;
+  --primary: 176 68% 36%;
+  --primary-foreground: 0 0% 100%;
+  --border: 214 22% 86%;
+  --input: 214 22% 90%;
+  --ring: 176 68% 36%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.14), transparent 34rem),
+    radial-gradient(circle at 85% 8%, rgba(16, 185, 129, 0.12), transparent 28rem),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.glass {
+  background: color-mix(in srgb, hsl(var(--card)) 78%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
