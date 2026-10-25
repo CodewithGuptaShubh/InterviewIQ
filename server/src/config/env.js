@@ -1,9 +1,19 @@
-import "dotenv/config";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import dotenv from "dotenv";
+
+// Read server/.env (local development) and the project-root .env (where hosts like PieHost place it).
+// Real environment variables always win; between the files, server/.env takes precedence.
+const serverRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+dotenv.config({ path: [path.join(serverRoot, ".env"), path.join(serverRoot, "../.env")], quiet: true });
 
 const isProd = process.env.NODE_ENV === "production";
 
 if (isProd && !process.env.JWT_ACCESS_SECRET) {
   throw new Error("JWT_ACCESS_SECRET must be set in production");
+}
+if (isProd && !process.env.MONGODB_URI) {
+  throw new Error("MONGODB_URI must be set in production (the embedded database is for local development only)");
 }
 
 export const env = {

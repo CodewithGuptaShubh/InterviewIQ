@@ -9,8 +9,9 @@
     "dev:all": "concurrently -n db,api,web -c magenta,cyan,green \"npm --prefix server run db\" \"npm --prefix server run dev\" \"npm run dev\"",
     "setup": "npm install && npm --prefix server install",
     "seed": "npm --prefix server run seed",
-    "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "build": "npm --prefix server install && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "start": "node server/src/index.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",
@@ -30,5 +31,8 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.5"
+  },
+  "engines": {
+    "node": ">=20.19"
   }
 }
